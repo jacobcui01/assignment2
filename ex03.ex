@@ -54,9 +54,16 @@ defmodule Ex03 do
   be used if needed.)
 
   """
-
-  def odd_even . . . "your code"
-
+  def odd_even([h| t]) do
+    if Integer.is_odd(h) do
+      [:odd| odd_even(t)] 
+    else
+      [:even| odd_even(t)]
+    end
+  end
+  def odd_even([]) do
+    []
+  end
 
   ##############################################################################
   # 3.2:  5 points #
@@ -76,8 +83,8 @@ defmodule Ex03 do
       true
 
   """
-
-  def list_contains . .. "your code"
+  def list_contains([], a), do: false
+  def list_contains([h| t], a), do: h==a or list_contains(t, a)
 
   ##############################################################################
   # 3.3:  5 points #
@@ -100,11 +107,22 @@ defmodule Ex03 do
       false
 
   """
-
-  def list_equal . . . "your code"
-
-
-
+  def list_equal([], []) do
+    true
+  end
+  def list_equal([h1| t1],[h2| t2]) do
+    if h1==h2 do
+     list_equal(t1, t2)
+    else 
+      false
+    end
+  end
+  def list_equal([], a) do
+    false
+  end
+  def list_equal(a, []) do
+    false
+  end
   ##############################################################################
   # 3.4:  5 points #
   ##################
@@ -148,9 +166,19 @@ defmodule Ex03 do
 
   Think a little about a nice way to lay this code out.
   """
-
-  def won . . . "your code"
-
+  def won(x) do
+    case x do
+      {a, a, a, _, _, _, _, _, _} -> a
+      {_, _, _, a, a, a, _, _, _} -> a
+      {_, _, _, _, _, _, a, a, a} -> a # three horizontal
+      {a, _, _, a, _, _, a, _, _} -> a
+      {_, a, _, _, a, _, _, a, _} -> a
+      {_, _, a, _, _, a, _, _, a} -> a # three vertical
+      {a, _, _, _, a, _, _, _, a} -> a
+      {_, _, a, _, a, _, a, _, _} -> a # two diagonal
+      _ -> false
+    end
+  end
 
   ###########################
   # IGNORE FROM HERE TO END #
@@ -163,7 +191,6 @@ defmodule Ex03 do
   end
 
 end
-
 
 ExUnit.start
 defmodule TestEx03 do
