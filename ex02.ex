@@ -31,6 +31,7 @@ defmodule Ex02 do
   ########################################################################
 
   list2a = fn (a+ b) -> [a+ b, a- b] end
+  # modified: list2a = fn (a, b) -> [a+ b, a- b] end
 
   assert list2a.(1, 2)    == [ 3, -1 ]
   assert list2a.(-1, 100) == [ 99, -101 ]
