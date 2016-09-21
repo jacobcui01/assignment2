@@ -61,6 +61,7 @@ defmodule Ex01 do
   #####################################################################
 
   sum3a = fn (a, b, c) -> sum2a, (sum2a.(a, b), c) end
+  # modified: sum3a = fn (a, b, c) -> sum2a. (sum2a.(a, b), c) end
 
   assert sum3a.(1, 3, 5)  == 9
   assert sum3a.(1, -3, 5) == 3
